@@ -13,7 +13,7 @@ class BigButtonUITest {
     val composeTestRule = createComposeRule()
 
     @Test
-    fun bigButton_click_changesState() {
+    fun `버튼이_잘_작동되는지_체크`() {
         var clicked = false
 
         composeTestRule.setContent {
