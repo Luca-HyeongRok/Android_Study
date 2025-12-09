@@ -40,6 +40,12 @@ fun SignUpScreen(
     var confirmPassword by remember { mutableStateOf("") }
     var acceptTerms by remember { mutableStateOf(false) }
 
+    val isPasswordMatch = password.isNotEmpty() && password == confirmPassword
+    val isFormValid = name.isNotEmpty() &&
+            email.isNotEmpty() &&
+            isPasswordMatch &&
+            acceptTerms
+
     Column(
         modifier = Modifier.fillMaxSize()
     ) {
@@ -110,7 +116,6 @@ fun SignUpScreen(
                     onNext = { focusManager.moveFocus(FocusDirection.Down) }
                 ),
                 visualTransformation = PasswordVisualTransformation(),
-
             ) { password = it }
             Spacer(modifier = Modifier.height(20.dp))
 
@@ -155,9 +160,9 @@ fun SignUpScreen(
             BigButton(
                 text = "Sign Up",
                 modifier = Modifier.fillMaxWidth(),
-                enabled = acceptTerms,
+                enabled = isFormValid,
                 onClick = {
-                    if (acceptTerms) onSignUpClick()
+                    onSignUpClick()
                 }
             )
 

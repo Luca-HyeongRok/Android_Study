@@ -132,7 +132,7 @@ fun SignInScreen(
                         append("Sign up")
                     }
                 },
-                style = AppTextStyles.smallerTextBold,
+                style = AppTextStyles.smallerTextRegular,
                 modifier = Modifier.clickable { onSignUpClick() }
             )
         }
