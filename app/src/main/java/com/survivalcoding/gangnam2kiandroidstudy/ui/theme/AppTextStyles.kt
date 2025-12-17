@@ -42,7 +42,7 @@ object AppTextStyles {
         fontSize = 14.sp,
         lineHeight = 21.sp
     )
-    val smallTextRegular2 = TextStyle(
+    val smallerTextRegular = TextStyle(
         fontFamily = AppFonts.Poppins,
         fontWeight = FontWeight.Normal,
         fontSize = 11.sp,
@@ -74,7 +74,7 @@ object AppTextStyles {
         lineHeight = 30.sp
     )
     val normalTextBold = TextStyle(
-        fontFamily = AppFonts.Poppins,
+        fontFamily = AppFonts.PoppinsSemiBold,
         fontWeight = FontWeight.Bold,
         fontSize = 16.sp,
         lineHeight = 24.sp

@@ -1,0 +1,12 @@
+package com.survivalcoding.gangnam2kiandroidstudy.presentation.screen.splash
+
+import androidx.compose.runtime.Composable
+
+@Composable
+fun SplashRoot(
+    onStartClick: () -> Unit
+) {
+    SplashScreen(
+        onStartClick = onStartClick
+    )
+}
