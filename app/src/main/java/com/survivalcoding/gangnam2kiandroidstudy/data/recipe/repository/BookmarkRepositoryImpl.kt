@@ -1,8 +1,9 @@
 package com.survivalcoding.gangnam2kiandroidstudy.data.recipe.repository
 
 import com.survivalcoding.gangnam2kiandroidstudy.domain.repository.BookmarkRepository
+import javax.inject.Inject
 
-class BookmarkRepositoryImpl(
+class BookmarkRepositoryImpl @Inject constructor(
     private val recipeRepository: RecipeRepository,
 ) : BookmarkRepository {
 

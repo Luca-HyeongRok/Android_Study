@@ -2,8 +2,9 @@ package com.survivalcoding.gangnam2kiandroidstudy.data.recipe.repository
 
 import com.survivalcoding.gangnam2kiandroidstudy.domain.model.recipe.Recipe
 import com.survivalcoding.gangnam2kiandroidstudy.domain.repository.SavedRecipesRepository
+import javax.inject.Inject
 
-class SavedRecipesRepositoryImpl(
+class SavedRecipesRepositoryImpl @Inject constructor(
     private val recipeRepository: RecipeRepository,
 ) : SavedRecipesRepository {
 
