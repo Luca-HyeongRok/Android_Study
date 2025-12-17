@@ -1,5 +1,6 @@
 package com.survivalcoding.gangnam2kiandroidstudy.di
 
+import com.survivalcoding.gangnam2kiandroidstudy.data.recipe.datasource.RecipeDataSource
 import com.survivalcoding.gangnam2kiandroidstudy.data.recipe.datasource.RecipeDataSourceImpl
 import com.survivalcoding.gangnam2kiandroidstudy.data.recipe.repository.BookmarkRepositoryImpl
 import com.survivalcoding.gangnam2kiandroidstudy.data.recipe.repository.RecipeRepository
@@ -13,7 +14,7 @@ import org.koin.dsl.module
 val appModule = module {
 
     // DataSource
-    single { RecipeDataSourceImpl() }
+    single<RecipeDataSource> { RecipeDataSourceImpl() }
 
     // Repository
     single<RecipeRepository> {
