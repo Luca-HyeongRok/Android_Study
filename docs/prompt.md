@@ -16,4 +16,17 @@
 + @SearchRecipeViewModelTest.kt 중복 있으면 제거 해줘
 
 
+# 3. 과제 3번
+@HomeScreen.kt에서 즐겨찾기 토글 + 상태유지 테스트를 할거야.
+테스트 시나리오 
+1. 리스트에서 북마크를 클릭
+2. ViewModel의 상태변경
+3. 화면 재구성 후에도 상태 유지
+
+테스트 요구 사항
+1. 버튼 클릭 후 아이콘 상태 변경
+2. 화면 회전 or recomposition 상황에서도 상태 유지할 수 있게
+만들어줘 
++ @HomeScreenTest.kt 에서 에러 있는 데 그거 고쳐줘
+
 

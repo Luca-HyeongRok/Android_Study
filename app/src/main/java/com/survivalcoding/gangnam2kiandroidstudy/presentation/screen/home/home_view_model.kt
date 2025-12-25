@@ -24,6 +24,16 @@ class HomeViewModel(
                 onSelectCategory(action.category)
             }
 
+            is HomeAction.ToggleRecipeBookmark -> {
+                val currentBookmarks = _state.value.bookmarkedRecipeIds
+                val updatedBookmarks = if (currentBookmarks.contains(action.recipeId)) {
+                    currentBookmarks - action.recipeId
+                } else {
+                    currentBookmarks + action.recipeId
+                }
+                _state.value = _state.value.copy(bookmarkedRecipeIds = updatedBookmarks)
+            }
+
             else -> Unit
         }
     }
