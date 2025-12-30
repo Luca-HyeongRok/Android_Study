@@ -4,15 +4,12 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import org.koin.androidx.compose.koinViewModel
-import org.koin.core.parameter.parametersOf
 
 @Composable
 fun RecipeDetailRoot(
     recipeId: Int,
     onBack: () -> Unit,
-    viewModel: RecipeDetailViewModel = koinViewModel {
-        parametersOf(recipeId)
-    }
+    viewModel: RecipeDetailViewModel = koinViewModel()
 ) {
     LaunchedEffect(recipeId) {
         viewModel.loadRecipeDetail(recipeId)

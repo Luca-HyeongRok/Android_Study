@@ -10,10 +10,9 @@ class GetRecipeDetailsUseCase(
     private val ingredientRepository: IngredientRepository,
     private val procedureRepository: ProcedureRepository,
 ) {
-    suspend operator fun invoke(recipeId: Int): RecipeDetails {
-        val recipe = recipeRepository.getRecipes()
-            .firstOrNull { it.id == recipeId }
-            ?: throw IllegalArgumentException("Recipe not found: $recipeId")
+    suspend operator fun invoke(recipeId: Int): RecipeDetails? {
+        val recipe = recipeRepository.getRecipeById(recipeId)
+            ?: return null
 
         val ingredients = ingredientRepository.getIngredients(recipeId)
         val procedures = procedureRepository.getProcedures(recipeId)
@@ -25,3 +24,4 @@ class GetRecipeDetailsUseCase(
         )
     }
 }
+

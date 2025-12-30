@@ -23,6 +23,15 @@ class RecipeDetailViewModel(
 
             val details = getRecipeDetailsUseCase(recipeId)
 
+            if (details == null) {
+                _state.update {
+                    it.copy(
+                        isLoading = false,
+                        message = "Recipe not found"
+                    )
+                }
+                return@launch
+            }
             _state.update {
                 it.copy(
                     isLoading = false,

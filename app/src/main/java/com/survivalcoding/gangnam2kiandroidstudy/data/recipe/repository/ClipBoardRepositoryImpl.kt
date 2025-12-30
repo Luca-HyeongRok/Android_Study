@@ -5,7 +5,7 @@ import android.content.ClipboardManager
 import android.content.Context
 import com.survivalcoding.gangnam2kiandroidstudy.domain.repository.ClipBoardRepository
 
-class ClipboardRepositoryImpl(context: Context) : ClipBoardRepository {
+class ClipBoardRepositoryImpl(context: Context) : ClipBoardRepository {
     private val clipboard = context.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
 
     override fun saveClipBoard(text: String) {

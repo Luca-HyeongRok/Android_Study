@@ -8,7 +8,7 @@ import com.survivalcoding.gangnam2kiandroidstudy.data.recipe.datasource.RecipeDa
 import com.survivalcoding.gangnam2kiandroidstudy.data.recipe.datasource.RecipeDataSourceImpl
 import com.survivalcoding.gangnam2kiandroidstudy.data.recipe.network.NetworkMonitorImpl
 import com.survivalcoding.gangnam2kiandroidstudy.data.recipe.repository.BookmarkRepositoryImpl
-import com.survivalcoding.gangnam2kiandroidstudy.data.recipe.repository.ClipboardRepositoryImpl
+import com.survivalcoding.gangnam2kiandroidstudy.data.recipe.repository.ClipBoardRepositoryImpl
 import com.survivalcoding.gangnam2kiandroidstudy.data.recipe.repository.IngredientRepositoryImpl
 import com.survivalcoding.gangnam2kiandroidstudy.data.recipe.repository.ProcedureRepositoryImpl
 import com.survivalcoding.gangnam2kiandroidstudy.data.recipe.repository.RecipeRepository
@@ -78,7 +78,7 @@ val appModule = module {
 
     // Clipboard
     single<ClipBoardRepository> {
-        ClipboardRepositoryImpl(
+        ClipBoardRepositoryImpl(
             context = androidContext()
         )
     }

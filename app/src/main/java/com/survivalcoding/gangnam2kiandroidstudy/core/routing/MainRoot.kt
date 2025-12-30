@@ -28,7 +28,7 @@ fun MainRoot(
                     entry<Route.Home> {
                         HomeRoot(
                             onOpenSearch = onOpenSearch,
-                            onOpenRecipeDetail = onOpenRecipeDetail,
+                            //onOpenRecipeDetail = onOpenRecipeDetail,
                         )
                     }
                     entry<Route.SavedRecipes> {
