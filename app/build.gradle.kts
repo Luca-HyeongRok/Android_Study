@@ -117,6 +117,7 @@ dependencies {
     implementation(libs.androidx.lifecycle.viewmodel.navigation3)
     implementation(libs.androidx.lifecycle.viewmodel.compose)
     implementation(libs.androidx.material3.adaptive.navigation3)
+    implementation(libs.androidx.compose.runtime)
 
     // Unit Test (src/test)
     testImplementation(libs.junit)
@@ -136,5 +137,7 @@ dependencies {
     // Debug
     debugImplementation(libs.androidx.compose.ui.tooling)
     debugImplementation(libs.androidx.compose.ui.test.manifest)
+
+    implementation("org.jetbrains.kotlinx:kotlinx-collections-immutable:0.3.7")
 }
 
