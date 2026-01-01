@@ -26,11 +26,11 @@ fun MainRoot(
                 modifier = modifier,
                 backStack = tabBackStack,
                 entryProvider = entryProvider {
-                    entry<Route.Home> {
-                        HomeRoot(
-                            onOpenSearch = onOpenSearch,
-                        )
-                    }
+                entry<Route.Home> {
+                    HomeRoot(
+                        onOpenSearch = onOpenSearch,
+                    )
+                }
                     entry<Route.SavedRecipes> {
                         SavedRecipesRoot(
                             onOpenRecipeDetail = onOpenRecipeDetail,

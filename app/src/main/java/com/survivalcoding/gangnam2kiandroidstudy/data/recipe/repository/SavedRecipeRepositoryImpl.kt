@@ -9,7 +9,7 @@ class SavedRecipesRepositoryImpl(
 
     override suspend fun getRecipesByIds(ids: List<Int>): List<Recipe> {
         return recipeRepository.getRecipes()
-            .filter { it.isSaved && it.id in ids }
+            .filter { it.id in ids }
     }
 
     override suspend fun removeSavedRecipe(id: Int) {

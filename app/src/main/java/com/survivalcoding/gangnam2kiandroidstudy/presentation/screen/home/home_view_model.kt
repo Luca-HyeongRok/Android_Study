@@ -3,16 +3,27 @@ package com.survivalcoding.gangnam2kiandroidstudy.presentation.screen.home
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.survivalcoding.gangnam2kiandroidstudy.data.recipe.repository.RecipeRepository
+import com.survivalcoding.gangnam2kiandroidstudy.domain.use_case.AddBookmarkUseCase
+import com.survivalcoding.gangnam2kiandroidstudy.domain.use_case.GetBookmarkedRecipeIdsUseCase
+import com.survivalcoding.gangnam2kiandroidstudy.domain.use_case.RemoveBookmarkUseCase
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 
 class HomeViewModel(
-    private val repository: RecipeRepository
+    private val repository: RecipeRepository,
+    private val addBookmarkUseCase: AddBookmarkUseCase,
+    private val removeBookmarkUseCase: RemoveBookmarkUseCase,
+    private val getBookmarkedRecipeIdsUseCase: GetBookmarkedRecipeIdsUseCase,
 ) : ViewModel() {
 
     private val _state = MutableStateFlow(HomeState())
     val state = _state.asStateFlow()
+
+    init {
+        observeBookmarks()
+    }
 
     fun onAction(action: HomeAction) {
         when (action) {
@@ -25,19 +36,31 @@ class HomeViewModel(
             }
 
             is HomeAction.ToggleRecipeBookmark -> {
-                val currentBookmarks = _state.value.bookmarkedRecipeIds
-                val updatedBookmarks = if (currentBookmarks.contains(action.recipeId)) {
-                    currentBookmarks - action.recipeId
-                } else {
-                    currentBookmarks + action.recipeId
-                }
-                _state.value = _state.value.copy(bookmarkedRecipeIds = updatedBookmarks)
+                toggleBookmark(action.recipeId)
             }
 
             else -> Unit
         }
     }
 
+    private fun observeBookmarks() {
+        viewModelScope.launch {
+            getBookmarkedRecipeIdsUseCase.execute().collect { ids ->
+                _state.update { it.copy(bookmarkedRecipeIds = ids.toSet()) }
+            }
+        }
+    }
+
+    private fun toggleBookmark(recipeId: Int) {
+        viewModelScope.launch {
+            val isBookmarked = _state.value.bookmarkedRecipeIds.contains(recipeId)
+            if (isBookmarked) {
+                removeBookmarkUseCase.execute(recipeId)
+            } else {
+                addBookmarkUseCase.execute(recipeId)
+            }
+        }
+    }
 
     private fun loadRecipes() {
         viewModelScope.launch {
@@ -56,7 +79,7 @@ class HomeViewModel(
                     _state.value = _state.value.copy(
                         errorMessage = "Failed to load recipes"
                     )
-                }
+            }
         }
     }
 
