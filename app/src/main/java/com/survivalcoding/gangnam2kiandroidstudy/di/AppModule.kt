@@ -14,7 +14,6 @@ import com.survivalcoding.gangnam2kiandroidstudy.domain.repository.*
 import com.survivalcoding.gangnam2kiandroidstudy.domain.use_case.CopyLinkUseCase
 import com.survivalcoding.gangnam2kiandroidstudy.domain.use_case.GetRecipeDetailsUseCase
 import com.survivalcoding.gangnam2kiandroidstudy.domain.use_case.GetSavedRecipesUseCase
-import com.survivalcoding.gangnam2kiandroidstudy.presentation.auth.GoogleAuthUiClient
 import com.survivalcoding.gangnam2kiandroidstudy.presentation.screen.auth.AuthViewModel
 import com.survivalcoding.gangnam2kiandroidstudy.presentation.screen.detail.RecipeDetailViewModel
 import com.survivalcoding.gangnam2kiandroidstudy.presentation.screen.home.HomeViewModel
@@ -58,11 +57,11 @@ val appModule = module {
         AuthRepositoryImpl(get())
     }
 
-    single {
-        GoogleAuthUiClient(
-            context = androidContext()
-        )
-    }
+//    single {
+//        GoogleAuthUiClient(
+//            context = androidContext()
+//        )
+//    }
 
     /* -----------------------------
      * DataSource
@@ -148,7 +147,6 @@ val appModule = module {
     viewModel {
         AuthViewModel(
             authRepository = get(),
-            googleAuthUiClient = get()
         )
     }
     viewModel {
