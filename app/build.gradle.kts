@@ -146,6 +146,8 @@ dependencies {
     implementation(libs.androidx.room.runtime)
     implementation(libs.androidx.room.ktx)
     implementation(libs.googleid)
+    implementation(libs.androidx.constraintlayout)
+    implementation(libs.androidx.recyclerview)
     ksp(libs.androidx.room.compiler)
 
     /* ---------------- Unit Test ---------------- */
