@@ -9,12 +9,12 @@ plugins {
 
 android {
     namespace = "com.survivalcoding.gangnam2kiandroidstudy"
-    compileSdk = 36
+    compileSdk = 35
 
     defaultConfig {
         applicationId = "com.survivalcoding.gangnam2kiandroidstudy"
         minSdk = 24
-        targetSdk = 36
+        targetSdk = 35
         versionCode = 1
         versionName = "1.0"
 
@@ -67,9 +67,14 @@ android {
     kotlinOptions {
         jvmTarget = "11"
     }
-
+/*
+* Compose + ViewBinding을 동시에 사용하는 설정
+* - Compose: 신규 화면
+* - ViewBinding: 레거시 Fragment
+*/
     buildFeatures {
         compose = true
+        viewBinding = true
         buildConfig = true
     }
 
