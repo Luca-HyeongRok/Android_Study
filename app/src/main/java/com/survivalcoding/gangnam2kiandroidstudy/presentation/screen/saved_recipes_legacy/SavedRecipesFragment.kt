@@ -92,8 +92,20 @@ class SavedRecipesLegacyFragment :
      * 등 어떤 행동이든 자유롭게 결정할 수 있다.
      */
     override fun onRecipeClick(recipeTitle: String) {
-        // 상세 화면 이동 또는 Toast 처리
+        /**
+         * RecyclerView 아이템 클릭 직후 호출되는 콜백
+         *
+         * 이 시점에서 Fragment는
+         * - 어떤 아이템이 클릭되었는지 알고 있고
+         * - 사용자에게 어떤 반응을 줄지 결정할 수 있다.
+         */
+        android.widget.Toast.makeText(
+            requireContext(),
+            "선택한 레시피: $recipeTitle",
+            android.widget.Toast.LENGTH_SHORT
+        ).show()
     }
+
 
     /**
      * View 생명주기 종료 시점
